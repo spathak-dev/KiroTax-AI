@@ -1,0 +1,320 @@
+[
+  {
+    "name": "Standard Invoice Template",
+    "description": "Generic invoice template for most vendors",
+    "category": "general",
+    "price": 0.0,
+    "license": "unlimited",
+    "fields": [
+      {
+        "field_name": "invoice_number",
+        "field_type": "text",
+        "keywords": ["Invoice No", "Bill No", "Invoice #"],
+        "regex_pattern": "INV-\\d{4}-\\d{3}",
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "invoice_date",
+        "field_type": "date",
+        "keywords": ["Date", "Invoice Date", "Bill Date"],
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "vendor_gstin",
+        "field_type": "text",
+        "keywords": ["GSTIN", "GST No", "Tax ID"],
+        "regex_pattern": "\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}\\d{1}[A-Z]{1}\\d{1}",
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "grand_total",
+        "field_type": "number",
+        "keywords": ["Total", "Grand Total", "Amount Payable"],
+        "required": true,
+        "confidence_threshold": 0.9
+      }
+    ]
+  },
+  {
+    "name": "Tech Solutions Invoice",
+    "description": "Template for Tech Solutions Pvt Ltd invoices",
+    "category": "vendor_specific",
+    "vendor_name": "Tech Solutions Pvt Ltd",
+    "price": 99.0,
+    "license": "commercial",
+    "fields": [
+      {
+        "field_name": "invoice_number",
+        "field_type": "text",
+        "coordinates": {"x": 450, "y": 50, "width": 150, "height": 20},
+        "keywords": ["Invoice No"],
+        "regex_pattern": "INV-\\d{4}-\\d{3}",
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "invoice_date",
+        "field_type": "date",
+        "coordinates": {"x": 450, "y": 75, "width": 150, "height": 20},
+        "keywords": ["Date"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "vendor_gstin",
+        "field_type": "text",
+        "coordinates": {"x": 50, "y": 120, "width": 200, "height": 20},
+        "keywords": ["GSTIN"],
+        "regex_pattern": "29ABCDE1234F1Z5",
+        "required": true,
+        "confidence_threshold": 0.95
+      },
+      {
+        "field_name": "customer_name",
+        "field_type": "text",
+        "coordinates": {"x": 50, "y": 200, "width": 250, "height": 20},
+        "keywords": ["Bill To", "Customer"],
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "subtotal",
+        "field_type": "number",
+        "coordinates": {"x": 450, "y": 600, "width": 100, "height": 20},
+        "keywords": ["Subtotal"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "cgst_total",
+        "field_type": "number",
+        "coordinates": {"x": 450, "y": 625, "width": 100, "height": 20},
+        "keywords": ["CGST"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "sgst_total",
+        "field_type": "number",
+        "coordinates": {"x": 450, "y": 650, "width": 100, "height": 20},
+        "keywords": ["SGST"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "grand_total",
+        "field_type": "number",
+        "coordinates": {"x": 450, "y": 700, "width": 100, "height": 20},
+        "keywords": ["Total", "Grand Total"],
+        "required": true,
+        "confidence_threshold": 0.95
+      }
+    ]
+  },
+  {
+    "name": "Restaurant Bill Template",
+    "description": "Template for restaurant and food service bills",
+    "category": "industry",
+    "price": 49.0,
+    "license": "commercial",
+    "fields": [
+      {
+        "field_name": "bill_number",
+        "field_type": "text",
+        "keywords": ["Bill No", "Token No"],
+        "required": true,
+        "confidence_threshold": 0.7
+      },
+      {
+        "field_name": "table_number",
+        "field_type": "text",
+        "keywords": ["Table", "Table No"],
+        "required": false,
+        "confidence_threshold": 0.6
+      },
+      {
+        "field_name": "date_time",
+        "field_type": "datetime",
+        "keywords": ["Date", "Time"],
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "items",
+        "field_type": "table",
+        "keywords": ["Item", "Qty", "Rate", "Amount"],
+        "required": true,
+        "confidence_threshold": 0.7
+      },
+      {
+        "field_name": "cgst_5",
+        "field_type": "number",
+        "keywords": ["CGST @ 2.5%"],
+        "required": false,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "sgst_5",
+        "field_type": "number",
+        "keywords": ["SGST @ 2.5%"],
+        "required": false,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "total_amount",
+        "field_type": "number",
+        "keywords": ["Total", "Net Amount"],
+        "required": true,
+        "confidence_threshold": 0.9
+      }
+    ]
+  },
+  {
+    "name": "E-commerce Invoice",
+    "description": "Template for online marketplace invoices",
+    "category": "industry",
+    "price": 149.0,
+    "license": "commercial",
+    "fields": [
+      {
+        "field_name": "order_id",
+        "field_type": "text",
+        "keywords": ["Order ID", "Order No"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "order_date",
+        "field_type": "date",
+        "keywords": ["Order Date"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "invoice_number",
+        "field_type": "text",
+        "keywords": ["Invoice No"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "seller_name",
+        "field_type": "text",
+        "keywords": ["Sold By", "Seller"],
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "seller_gstin",
+        "field_type": "text",
+        "keywords": ["Seller GSTIN"],
+        "regex_pattern": "\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}\\d{1}[A-Z]{1}\\d{1}",
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "shipping_address",
+        "field_type": "text",
+        "keywords": ["Shipping Address", "Delivery Address"],
+        "required": true,
+        "confidence_threshold": 0.7
+      },
+      {
+        "field_name": "product_details",
+        "field_type": "table",
+        "keywords": ["Product", "Qty", "Price"],
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "shipping_charges",
+        "field_type": "number",
+        "keywords": ["Shipping", "Delivery Charges"],
+        "required": false,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "total_amount",
+        "field_type": "number",
+        "keywords": ["Total Amount", "Amount Payable"],
+        "required": true,
+        "confidence_threshold": 0.95
+      }
+    ]
+  },
+  {
+    "name": "Professional Services Invoice",
+    "description": "Template for consulting and professional services",
+    "category": "industry",
+    "price": 199.0,
+    "license": "commercial",
+    "fields": [
+      {
+        "field_name": "invoice_number",
+        "field_type": "text",
+        "keywords": ["Invoice No", "Invoice #"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "invoice_date",
+        "field_type": "date",
+        "keywords": ["Invoice Date", "Date"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "service_period",
+        "field_type": "text",
+        "keywords": ["Service Period", "Period"],
+        "required": false,
+        "confidence_threshold": 0.7
+      },
+      {
+        "field_name": "consultant_name",
+        "field_type": "text",
+        "keywords": ["Consultant", "Service Provider"],
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "client_name",
+        "field_type": "text",
+        "keywords": ["Client", "Bill To"],
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "services_rendered",
+        "field_type": "table",
+        "keywords": ["Description", "Hours", "Rate", "Amount"],
+        "required": true,
+        "confidence_threshold": 0.8
+      },
+      {
+        "field_name": "professional_fee",
+        "field_type": "number",
+        "keywords": ["Professional Fee", "Service Charges"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "gst_amount",
+        "field_type": "number",
+        "keywords": ["GST", "Tax"],
+        "required": true,
+        "confidence_threshold": 0.9
+      },
+      {
+        "field_name": "total_payable",
+        "field_type": "number",
+        "keywords": ["Total Payable", "Amount Due"],
+        "required": true,
+        "confidence_threshold": 0.95
+      }
+    ]
+  }
+]

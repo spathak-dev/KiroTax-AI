@@ -1,0 +1,55 @@
+{
+  "layout_id": "long_receipt",
+  "name": "Long Receipt Layout",
+  "description": "Narrow, long receipt (thermal printer format)",
+  "characteristics": {
+    "orientation": "portrait",
+    "page_size": ["thermal_80mm", "thermal_58mm"],
+    "typical_height_range": [1000, 3000],
+    "typical_width_range": [200, 350],
+    "sections": [
+      "header",
+      "items_list",
+      "totals",
+      "footer"
+    ]
+  },
+  "detection_rules": {
+    "aspect_ratio": {
+      "min": 3.0,
+      "description": "Height is at least 3x width"
+    },
+    "width_threshold": 400,
+    "min_keywords": 2,
+    "keywords": [
+      "Receipt",
+      "Bill",
+      "Total",
+      "Thank You"
+    ]
+  },
+  "typical_regions": {
+    "header": {
+      "y_range": [0, 0.10],
+      "contains": ["store_name", "receipt_number", "date_time"]
+    },
+    "items_list": {
+      "y_range": [0.10, 0.80],
+      "contains": ["item_names", "quantities", "prices"],
+      "format": "vertical_list"
+    },
+    "totals": {
+      "y_range": [0.80, 0.95],
+      "contains": ["subtotal", "tax", "total"]
+    },
+    "footer": {
+      "y_range": [0.95, 1.0],
+      "contains": ["thank_you_message", "barcode"]
+    }
+  },
+  "special_handling": {
+    "multi_scan_required": true,
+    "scan_overlap": 50,
+    "repetition_detection": true
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "layout_id": "tabular_invoice",
+  "name": "Tabular Invoice Layout",
+  "description": "Invoice with complex multi-column table structure",
+  "characteristics": {
+    "orientation": "landscape",
+    "page_size": ["A4", "Letter", "A3"],
+    "table_dominant": true,
+    "sections": [
+      "header",
+      "complex_table",
+      "totals"
+    ]
+  },
+  "detection_rules": {
+    "min_columns": 5,
+    "table_coverage": 0.60,
+    "min_keywords": 3,
+    "keywords": [
+      "Invoice",
+      "Item",
+      "Qty",
+      "Rate",
+      "Amount",
+      "Tax"
+    ]
+  },
+  "table_structure": {
+    "header_row": {
+      "detection": "first_row_with_keywords",
+      "keywords": ["Item", "Description", "Qty", "Rate", "Amount", "Tax", "Total"]
+    },
+    "columns": [
+      {
+        "name": "line_number",
+        "aliases": ["#", "S.No", "Sr.No"],
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "description",
+        "aliases": ["Item", "Description", "Product", "Service"],
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "hsn_code",
+        "aliases": ["HSN", "HSN Code", "SAC"],
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "quantity",
+        "aliases": ["Qty", "Quantity", "Nos"],
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "unit",
+        "aliases": ["Unit", "UOM"],
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "unit_price",
+        "aliases": ["Rate", "Price", "Unit Price"],
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "discount",
+        "aliases": ["Disc", "Discount", "Disc %"],
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "tax_rate",
+        "aliases": ["Tax %", "GST %", "Tax Rate"],
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "tax_amount",
+        "aliases": ["Tax", "GST", "Tax Amount"],
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "total",
+        "aliases": ["Amount", "Total", "Line Total"],
+        "type": "number",
+        "required": true
+      }
+    ],
+    "row_detection": {
+      "min_columns_filled": 3,
+      "numeric_columns": ["quantity", "unit_price", "total"],
+      "end_indicators": ["Subtotal", "Total", "Grand Total"]
+    }
+  },
+  "typical_regions": {
+    "header": {
+      "y_range": [0, 0.15],
+      "contains": ["invoice_number", "date", "vendor_info"]
+    },
+    "table": {
+      "y_range": [0.15, 0.80],
+      "contains": ["table_header", "line_items"]
+    },
+    "totals": {
+      "y_range": [0.80, 1.0],
+      "contains": ["subtotal", "taxes", "grand_total"]
+    }
+  }
+}

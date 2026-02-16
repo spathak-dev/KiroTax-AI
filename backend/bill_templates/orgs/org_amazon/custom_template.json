@@ -1,0 +1,120 @@
+{
+  "template_id": "amazon_invoice",
+  "name": "Amazon India Invoice",
+  "layout_type": "standard_invoice",
+  "org_id": "org_amazon",
+  "version": "1.0.0",
+  "detection": {
+    "keywords": ["Amazon", "Order ID", "amazon.in"],
+    "min_matches": 2,
+    "logo_hash": "amazon_logo_hash",
+    "confidence_threshold": 0.85
+  },
+  "fields": {
+    "order_id": {
+      "method": "regex",
+      "pattern": "Order\\s+ID[:\\s]*(\\d{3}-\\d{7}-\\d{7})",
+      "required": true
+    },
+    "invoice_number": {
+      "method": "regex",
+      "pattern": "Invoice\\s+Number[:\\s]*(.*?)(?:\\n|$)",
+      "required": true
+    },
+    "order_date": {
+      "method": "regex",
+      "pattern": "Order\\s+Date[:\\s]*(\\d{1,2}\\s+\\w+\\s+\\d{4})",
+      "required": true
+    },
+    "seller_name": {
+      "method": "regex",
+      "pattern": "Sold\\s+By[:\\s]*(.*?)(?:\\n|$)",
+      "required": true
+    },
+    "seller_gstin": {
+      "method": "regex",
+      "pattern": "GSTIN[:\\s]*(\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}\\d{1}[A-Z]{1}\\d{1})",
+      "required": true
+    },
+    "shipping_address": {
+      "method": "regex",
+      "pattern": "Shipping\\s+Address[:\\s]*(.*?)(?=Billing|Order)",
+      "required": true
+    },
+    "item_total": {
+      "method": "regex",
+      "pattern": "Item\\(s\\)\\s+Subtotal[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "shipping": {
+      "method": "regex",
+      "pattern": "Shipping[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "total_before_tax": {
+      "method": "regex",
+      "pattern": "Total\\s+Before\\s+Tax[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "igst": {
+      "method": "regex",
+      "pattern": "IGST[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "grand_total": {
+      "method": "regex",
+      "pattern": "Grand\\s+Total[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "required": true,
+      "type": "number"
+    }
+  },
+  "table": {
+    "detection": {
+      "header_keywords": ["Product", "Qty", "Gross Amount", "Tax"],
+      "min_columns": 4
+    },
+    "columns": [
+      {
+        "name": "description",
+        "aliases": ["Product"],
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "quantity",
+        "aliases": ["Qty"],
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "unit_price",
+        "aliases": ["Unit Price"],
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "gross_amount",
+        "aliases": ["Gross Amount"],
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "tax_amount",
+        "aliases": ["Tax Amount"],
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "total",
+        "aliases": ["Total Amount"],
+        "type": "number",
+        "required": true
+      }
+    ]
+  },
+  "special_handling": {
+    "date_format": "DD MMM YYYY",
+    "currency_symbol": "₹",
+    "decimal_separator": "."
+  }
+}

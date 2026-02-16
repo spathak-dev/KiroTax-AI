@@ -1,0 +1,178 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Universal Normalized Invoice Schema",
+  "description": "All bills map to this schema regardless of source format",
+  "type": "object",
+  "required": ["invoice", "items", "meta"],
+  "properties": {
+    "invoice": {
+      "type": "object",
+      "required": ["invoice_number", "date", "grand_total"],
+      "properties": {
+        "invoice_number": {
+          "type": "string",
+          "description": "Unique invoice identifier"
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Invoice date in YYYY-MM-DD format"
+        },
+        "due_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "vendor_name": {
+          "type": "string"
+        },
+        "vendor_gstin": {
+          "type": ["string", "null"],
+          "pattern": "^\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}\\d{1}[A-Z]{1}\\d{1}$"
+        },
+        "vendor_address": {
+          "type": ["string", "null"]
+        },
+        "buyer_name": {
+          "type": "string"
+        },
+        "buyer_gstin": {
+          "type": ["string", "null"]
+        },
+        "buyer_address": {
+          "type": ["string", "null"]
+        },
+        "currency": {
+          "type": "string",
+          "default": "INR"
+        },
+        "subtotal": {
+          "type": "number",
+          "minimum": 0
+        },
+        "discount": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        },
+        "tax_total": {
+          "type": "number",
+          "minimum": 0
+        },
+        "shipping": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        },
+        "grand_total": {
+          "type": "number",
+          "minimum": 0
+        },
+        "payment_terms": {
+          "type": ["string", "null"]
+        },
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "required": ["description", "total"],
+        "properties": {
+          "line_number": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "hsn_code": {
+            "type": ["string", "null"]
+          },
+          "quantity": {
+            "type": "number",
+            "minimum": 0
+          },
+          "unit": {
+            "type": ["string", "null"]
+          },
+          "unit_price": {
+            "type": "number",
+            "minimum": 0
+          },
+          "discount": {
+            "type": "number",
+            "minimum": 0,
+            "default": 0
+          },
+          "tax_rate": {
+            "type": "number",
+            "minimum": 0
+          },
+          "tax_amount": {
+            "type": "number",
+            "minimum": 0
+          },
+          "total": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "taxes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tax_type": {
+            "type": "string",
+            "enum": ["CGST", "SGST", "IGST", "VAT", "CESS"]
+          },
+          "rate": {
+            "type": "number"
+          },
+          "amount": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["template_used", "confidence"],
+      "properties": {
+        "template_used": {
+          "type": "string",
+          "description": "Template ID that was matched"
+        },
+        "layout_type": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "ocr_engine": {
+          "type": "string"
+        },
+        "processing_time_ms": {
+          "type": "integer"
+        },
+        "page_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

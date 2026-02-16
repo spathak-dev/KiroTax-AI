@@ -1,0 +1,766 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-02-15",
+  "tools": [
+    {
+      "name": "ocr_extract_text",
+      "description": "Extract text from bill image or PDF using OCR technology",
+      "owner": "harit",
+      "timeout_seconds": 30,
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_seconds": 2
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["image_url"],
+        "properties": {
+          "image_url": {
+            "type": "string",
+            "description": "URL or S3 path to the bill image/PDF",
+            "format": "uri"
+          },
+          "ocr_engine": {
+            "type": "string",
+            "description": "OCR engine to use",
+            "enum": ["tesseract", "google_vision", "auto"],
+            "default": "auto"
+          },
+          "language": {
+            "type": "string",
+            "description": "Language code for OCR",
+            "default": "eng"
+          },
+          "preprocessing": {
+            "type": "boolean",
+            "description": "Apply image preprocessing",
+            "default": true
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "ocr_text": {
+            "type": "string",
+            "description": "Extracted text from image"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "OCR confidence score (0-1)",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "processing_time_ms": {
+            "type": "integer"
+          },
+          "engine_used": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "detect_layout",
+      "description": "Detect and classify bill layout type",
+      "owner": "harit",
+      "timeout_seconds": 5,
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": 1
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["ocr_text"],
+        "properties": {
+          "ocr_text": {
+            "type": "string",
+            "description": "OCR extracted text"
+          },
+          "image_dimensions": {
+            "type": "object",
+            "properties": {
+              "width": {"type": "integer"},
+              "height": {"type": "integer"}
+            }
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "layout_type": {
+            "type": "string",
+            "enum": ["standard_invoice", "long_receipt", "multi_page_invoice", "tabular_invoice"]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "match_template",
+      "description": "Match bill to appropriate template based on layout and content",
+      "owner": "harit",
+      "timeout_seconds": 5,
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": 1
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["ocr_text", "layout_type"],
+        "properties": {
+          "ocr_text": {
+            "type": "string"
+          },
+          "layout_type": {
+            "type": "string"
+          },
+          "org_id": {
+            "type": "string",
+            "description": "Organization ID for custom templates"
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "template_id": {
+            "type": "string"
+          },
+          "template_name": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "field_mappings": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "name": "extract_fields",
+      "description": "Extract structured fields from bill using template and AI",
+      "owner": "harit",
+      "timeout_seconds": 10,
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_seconds": 2
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["ocr_text", "template_id"],
+        "properties": {
+          "ocr_text": {
+            "type": "string"
+          },
+          "template_id": {
+            "type": "string"
+          },
+          "use_ai": {
+            "type": "boolean",
+            "description": "Use Gemini AI for extraction",
+            "default": true
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "extracted_fields": {
+            "type": "object",
+            "properties": {
+              "invoice_number": {"type": "string"},
+              "date": {"type": "string", "format": "date"},
+              "vendor_name": {"type": "string"},
+              "vendor_gstin": {"type": "string"},
+              "buyer_name": {"type": "string"},
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "description": {"type": "string"},
+                    "quantity": {"type": "number"},
+                    "unit_price": {"type": "number"},
+                    "tax_rate": {"type": "number"},
+                    "total": {"type": "number"}
+                  }
+                }
+              },
+              "subtotal": {"type": "number"},
+              "tax_total": {"type": "number"},
+              "grand_total": {"type": "number"}
+            }
+          },
+          "confidence_scores": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "name": "normalize_data",
+      "description": "Normalize extracted data to universal schema",
+      "owner": "harit",
+      "timeout_seconds": 3,
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": 1
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["extracted_fields"],
+        "properties": {
+          "extracted_fields": {
+            "type": "object"
+          },
+          "target_schema": {
+            "type": "string",
+            "default": "normalized_invoice_v1"
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "normalized_data": {
+            "type": "object"
+          },
+          "validation_errors": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    {
+      "name": "validate_compliance",
+      "description": "Validate bill data against compliance rules using RAG",
+      "owner": "harit",
+      "timeout_seconds": 15,
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": 3
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["bill_data"],
+        "properties": {
+          "bill_data": {
+            "type": "object"
+          },
+          "compliance_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["gst", "income_tax", "industry_specific"]
+            },
+            "default": ["gst"]
+          },
+          "strict_mode": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "compliance_status": {
+            "type": "string",
+            "enum": ["pass", "fail", "warning"]
+          },
+          "violations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rule_id": {"type": "string"},
+                "severity": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+                "description": {"type": "string"},
+                "field": {"type": "string"},
+                "expected": {"type": "string"},
+                "actual": {"type": "string"}
+              }
+            }
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    {
+      "name": "store_bill",
+      "description": "Store processed bill data in database",
+      "owner": "harit",
+      "timeout_seconds": 5,
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_seconds": 2
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["bill_data", "user_id"],
+        "properties": {
+          "bill_data": {
+            "type": "object"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "bill_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    {
+      "name": "retrieve_context",
+      "description": "Retrieve relevant context from vector database for RAG",
+      "owner": "harit",
+      "timeout_seconds": 5,
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_seconds": 1
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "User query or question"
+          },
+          "top_k": {
+            "type": "integer",
+            "description": "Number of documents to retrieve",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 20
+          },
+          "min_relevance_score": {
+            "type": "number",
+            "description": "Minimum relevance score",
+            "default": 0.7,
+            "minimum": 0,
+            "maximum": 1
+          },
+          "filter": {
+            "type": "object",
+            "description": "Metadata filters"
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {"type": "string"},
+                "text": {"type": "string"},
+                "relevance_score": {"type": "number"},
+                "metadata": {"type": "object"}
+              }
+            }
+          },
+          "total_results": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    {
+      "name": "generate_answer",
+      "description": "Generate answer using Gemini AI with retrieved context",
+      "owner": "harit",
+      "timeout_seconds": 20,
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": 5
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["question", "context"],
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "context": {
+            "type": "array",
+            "items": {"type": "object"}
+          },
+          "temperature": {
+            "type": "number",
+            "default": 0.3,
+            "minimum": 0,
+            "maximum": 1
+          },
+          "max_tokens": {
+            "type": "integer",
+            "default": 1000
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low"]
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {"type": "string"},
+                "relevance": {"type": "number"}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "detect_anomalies",
+      "description": "Detect anomalies or suspicious patterns in bill data",
+      "owner": "harit",
+      "timeout_seconds": 10,
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": 2
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["bill_data"],
+        "properties": {
+          "bill_data": {
+            "type": "object"
+          },
+          "historical_data": {
+            "type": "array",
+            "description": "Historical bills for comparison"
+          },
+          "sensitivity": {
+            "type": "string",
+            "enum": ["low", "medium", "high"],
+            "default": "medium"
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "anomalies_detected": {
+            "type": "boolean"
+          },
+          "anomalies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {"type": "string"},
+                "severity": {"type": "string"},
+                "description": {"type": "string"},
+                "field": {"type": "string"},
+                "expected_range": {"type": "string"},
+                "actual_value": {"type": "string"}
+              }
+            }
+          },
+          "risk_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "categorize_bill",
+      "description": "Automatically categorize bill by type and purpose",
+      "owner": "harit",
+      "timeout_seconds": 5,
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": 1
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["bill_data"],
+        "properties": {
+          "bill_data": {
+            "type": "object"
+          },
+          "use_ml": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "category": {
+            "type": "string"
+          },
+          "subcategory": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "suggested_tags": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    {
+      "name": "authenticate_user",
+      "description": "Authenticate user and generate JWT token",
+      "owner": "tushar",
+      "timeout_seconds": 5,
+      "retry_policy": {
+        "max_retries": 1,
+        "backoff_seconds": 1
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "access_token": {
+            "type": "string"
+          },
+          "refresh_token": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "integer"
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "email": {"type": "string"},
+              "name": {"type": "string"},
+              "role": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "check_permissions",
+      "description": "Check if user has required permissions",
+      "owner": "tushar",
+      "timeout_seconds": 2,
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": 1
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["user_id", "resource", "action"],
+        "properties": {
+          "user_id": {
+            "type": "string"
+          },
+          "resource": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string",
+            "enum": ["create", "read", "update", "delete"]
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "has_permission": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "log_audit_event",
+      "description": "Log audit event for compliance tracking",
+      "owner": "tushar",
+      "timeout_seconds": 3,
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_seconds": 1
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["event_type", "user_id", "resource"],
+        "properties": {
+          "event_type": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "resource": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "audit_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    {
+      "name": "send_notification",
+      "description": "Send notification to user via email, SMS, or in-app",
+      "owner": "tushar",
+      "timeout_seconds": 10,
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_seconds": 2
+      },
+      "parameters": {
+        "type": "object",
+        "required": ["user_id", "message", "channel"],
+        "properties": {
+          "user_id": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string",
+            "enum": ["email", "sms", "in_app", "all"]
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "urgent"],
+            "default": "medium"
+          },
+          "template_id": {
+            "type": "string"
+          }
+        }
+      },
+      "response_format": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "notification_id": {
+            "type": "string"
+          },
+          "sent_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  ]
+}

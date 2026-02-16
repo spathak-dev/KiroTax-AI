@@ -1,0 +1,114 @@
+@page "/bills"
+@using admin.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+
+<PageTitle>Bill Management - KiroTax AI</PageTitle>
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>Bill Management</h1>
+        <div class="stats-summary">
+            <span class="stat-item">Total: <strong>@bills.Count</strong></span>
+            <span class="stat-item">Processed: <strong>@bills.Count(b => b.Status == "processed")</strong></span>
+            <span class="stat-item">Processing: <strong>@bills.Count(b => b.Status == "processing")</strong></span>
+            <span class="stat-item">Failed: <strong>@bills.Count(b => b.Status == "failed")</strong></span>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" class="form-control" placeholder="Search bills..." @bind="searchTerm" @bind:event="oninput" />
+        <select class="form-select" @bind="filterStatus">
+            <option value="">All Status</option>
+            <option value="uploaded">Uploaded</option>
+            <option value="processing">Processing</option>
+            <option value="processed">Processed</option>
+            <option value="failed">Failed</option>
+        </select>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>File Name</th>
+                    <th>Invoice #</th>
+                    <th>Vendor</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Uploaded</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bill in FilteredBills)
+                {
+                    <tr>
+                        <td>@bill.Id</td>
+                        <td>@bill.FileName</td>
+                        <td>@bill.InvoiceNumber</td>
+                        <td>@bill.VendorName</td>
+                        <td>@(bill.GrandTotal?.ToString("C") ?? "-")</td>
+                        <td><span class="badge bg-@GetStatusBadgeColor(bill.Status)">@bill.Status</span></td>
+                        <td>@bill.CreatedAt.ToString("MMM dd, yyyy")</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" @onclick="() => ViewBill(bill)">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            @if (bill.Status == "failed")
+                            {
+                                <button class="btn btn-sm btn-outline-warning" @onclick="() => ReprocessBill(bill)">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<Bill> bills = new();
+    private string searchTerm = "";
+    private string filterStatus = "";
+
+    private IEnumerable<Bill> FilteredBills => bills
+        .Where(b => string.IsNullOrEmpty(searchTerm) || 
+                    b.FileName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    (b.InvoiceNumber?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false))
+        .Where(b => string.IsNullOrEmpty(filterStatus) || b.Status == filterStatus);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadBills();
+    }
+
+    private async Task LoadBills()
+    {
+        bills = await DbContext.Bills.OrderByDescending(b => b.CreatedAt).ToListAsync();
+    }
+
+    private void ViewBill(Bill bill)
+    {
+        // View bill details
+    }
+
+    private async Task ReprocessBill(Bill bill)
+    {
+        bill.Status = "processing";
+        await DbContext.SaveChangesAsync();
+        await LoadBills();
+    }
+
+    private string GetStatusBadgeColor(string status) => status switch
+    {
+        "uploaded" => "secondary",
+        "processing" => "warning",
+        "processed" => "success",
+        "failed" => "danger",
+        _ => "secondary"
+    };
+}

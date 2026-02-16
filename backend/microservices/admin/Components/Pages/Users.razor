@@ -1,0 +1,130 @@
+@page "/users"
+@using admin.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+@inject NavigationManager Navigation
+
+<PageTitle>User Management - KiroTax AI</PageTitle>
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>User Management</h1>
+        <button class="btn btn-primary" @onclick="ShowAddUserDialog">
+            <i class="bi bi-plus-circle"></i> Add User
+        </button>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" class="form-control" placeholder="Search users..." @bind="searchTerm" @bind:event="oninput" />
+        <select class="form-select" @bind="filterRole">
+            <option value="">All Roles</option>
+            <option value="admin">Admin</option>
+            <option value="ca">CA</option>
+            <option value="auditor">Auditor</option>
+            <option value="client">Client</option>
+        </select>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Company</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in FilteredUsers)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td><span class="badge bg-@GetRoleBadgeColor(user.Role)">@user.Role</span></td>
+                        <td>@user.Company</td>
+                        <td>
+                            @if (user.IsActive)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Inactive</span>
+                            }
+                        </td>
+                        <td>@user.CreatedAt.ToString("MMM dd, yyyy")</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" @onclick="() => EditUser(user)">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteUser(user)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<User> users = new();
+    private string searchTerm = "";
+    private string filterRole = "";
+
+    private IEnumerable<User> FilteredUsers => users
+        .Where(u => string.IsNullOrEmpty(searchTerm) || 
+                    u.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    u.Email.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+        .Where(u => string.IsNullOrEmpty(filterRole) || u.Role == filterRole);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        users = await DbContext.Users.ToListAsync();
+    }
+
+    private void ShowAddUserDialog()
+    {
+        // Navigate to add user page or show modal
+        Navigation.NavigateTo("/users/add");
+    }
+
+    private void EditUser(User user)
+    {
+        Navigation.NavigateTo($"/users/edit/{user.Id}");
+    }
+
+    private async Task DeleteUser(User user)
+    {
+        if (user.Role == "admin" && users.Count(u => u.Role == "admin") == 1)
+        {
+            // Prevent deleting last admin
+            return;
+        }
+
+        DbContext.Users.Remove(user);
+        await DbContext.SaveChangesAsync();
+        await LoadUsers();
+    }
+
+    private string GetRoleBadgeColor(string role) => role switch
+    {
+        "admin" => "danger",
+        "ca" => "primary",
+        "auditor" => "info",
+        "client" => "secondary",
+        _ => "secondary"
+    };
+}

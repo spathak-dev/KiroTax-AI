@@ -1,0 +1,157 @@
+@page "/users/add"
+@using admin.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+@inject NavigationManager Navigation
+
+<PageTitle>Add User - KiroTax AI</PageTitle>
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>Add New User</h1>
+        <button class="btn btn-secondary" @onclick="Cancel">
+            <i class="bi bi-x-circle"></i> Cancel
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <EditForm Model="@user" OnValidSubmit="HandleSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="text-danger" />
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Name *</label>
+                        <InputText class="form-control" @bind-Value="user.Name" placeholder="Enter full name" />
+                        <ValidationMessage For="@(() => user.Name)" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email *</label>
+                        <InputText type="email" class="form-control" @bind-Value="user.Email" placeholder="user@example.com" />
+                        <ValidationMessage For="@(() => user.Email)" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Role *</label>
+                        <InputSelect class="form-select" @bind-Value="user.Role">
+                            <option value="">Select Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="ca">CA (Chartered Accountant)</option>
+                            <option value="auditor">Auditor</option>
+                            <option value="client">Client</option>
+                        </InputSelect>
+                        <ValidationMessage For="@(() => user.Role)" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Company</label>
+                        <InputText class="form-control" @bind-Value="user.Company" placeholder="Company name (optional)" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-check">
+                        <InputCheckbox class="form-check-input" @bind-Value="user.IsActive" id="isActive" />
+                        <label class="form-check-label" for="isActive">
+                            Active User
+                        </label>
+                    </div>
+                    <small class="text-muted">Inactive users cannot log in to the system</small>
+                </div>
+
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill"></i> @errorMessage
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(successMessage))
+                {
+                    <div class="alert alert-success" role="alert">
+                        <i class="bi bi-check-circle-fill"></i> @successMessage
+                    </div>
+                }
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary" disabled="@isSubmitting">
+                        @if (isSubmitting)
+                        {
+                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        }
+                        <i class="bi bi-save"></i> Create User
+                    </button>
+                    <button type="button" class="btn btn-secondary" @onclick="Cancel">
+                        <i class="bi bi-x-circle"></i> Cancel
+                    </button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private User user = new() { IsActive = true, Role = "client" };
+    private string? errorMessage;
+    private string? successMessage;
+    private bool isSubmitting = false;
+
+    private async Task HandleSubmit()
+    {
+        try
+        {
+            isSubmitting = true;
+            errorMessage = null;
+            successMessage = null;
+
+            // Check if email already exists
+            var existingUser = await DbContext.Users
+                .FirstOrDefaultAsync(u => u.Email == user.Email);
+
+            if (existingUser != null)
+            {
+                errorMessage = "A user with this email already exists";
+                return;
+            }
+
+            user.CreatedAt = DateTime.UtcNow;
+            DbContext.Users.Add(user);
+            await DbContext.SaveChangesAsync();
+
+            // Log activity
+            var log = new ActivityLog
+            {
+                Action = "user_created",
+                Description = $"Created new user: {user.Name} ({user.Email})",
+                UserId = null,
+                EntityType = "User",
+                EntityId = user.Id,
+                Timestamp = DateTime.UtcNow,
+                Icon = "person-plus-fill"
+            };
+            DbContext.ActivityLogs.Add(log);
+            await DbContext.SaveChangesAsync();
+
+            successMessage = "User created successfully!";
+            await Task.Delay(1500);
+            Navigation.NavigateTo("/users");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error creating user: {ex.Message}";
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/users");
+    }
+}

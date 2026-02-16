@@ -1,0 +1,143 @@
+[
+  {
+    "invoice_number": "INV-2024-001",
+    "invoice_date": "2024-01-15",
+    "vendor_name": "Tech Solutions Pvt Ltd",
+    "vendor_gstin": "29ABCDE1234F1Z5",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 100000.00,
+    "cgst_rate": 9.0,
+    "cgst_total": 9000.00,
+    "sgst_rate": 9.0,
+    "sgst_total": 9000.00,
+    "igst_total": 0.00,
+    "total_tax": 18000.00,
+    "grand_total": 118000.00,
+    "line_items": [
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 100,
+        "rate": 1000.00,
+        "amount": 100000.00
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2024-002",
+    "invoice_date": "2024-01-20",
+    "vendor_name": "Office Supplies Co",
+    "vendor_gstin": "07PQRST9012K3L4",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 50000.00,
+    "cgst_rate": 6.0,
+    "cgst_total": 3000.00,
+    "sgst_rate": 6.0,
+    "sgst_total": 3000.00,
+    "igst_total": 0.00,
+    "total_tax": 6000.00,
+    "grand_total": 56000.00,
+    "line_items": [
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 10,
+        "rate": 5000.00,
+        "amount": 50000.00
+      }
+    ],
+    "place_of_supply": "Delhi",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2024-003",
+    "invoice_date": "2024-02-01",
+    "vendor_name": "Cloud Services India",
+    "vendor_gstin": "19UVWXY4567M8N9",
+    "customer_name": "Digital Marketing Ltd",
+    "customer_gstin": "29STUVW7890P1Q2",
+    "subtotal": 75000.00,
+    "cgst_total": 0.00,
+    "sgst_total": 0.00,
+    "igst_rate": 18.0,
+    "igst_total": 13500.00,
+    "total_tax": 13500.00,
+    "grand_total": 88500.00,
+    "line_items": [
+      {
+        "description": "Cloud Hosting Services",
+        "hsn_code": "998314",
+        "quantity": 1,
+        "rate": 75000.00,
+        "amount": 75000.00
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2024-004",
+    "invoice_date": "2024-02-10",
+    "vendor_name": "Consulting Services Pvt Ltd",
+    "vendor_gstin": "24ABCDE5678F9G0",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 200000.00,
+    "cgst_rate": 9.0,
+    "cgst_total": 18000.00,
+    "sgst_rate": 9.0,
+    "sgst_total": 18000.00,
+    "igst_total": 0.00,
+    "total_tax": 36000.00,
+    "grand_total": 236000.00,
+    "line_items": [
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 40,
+        "rate": 5000.00,
+        "amount": 200000.00
+      }
+    ],
+    "place_of_supply": "Gujarat",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2024-005",
+    "invoice_date": "2024-02-14",
+    "vendor_name": "Hardware Suppliers",
+    "vendor_gstin": "33OPQRS2345T6U7",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 150000.00,
+    "cgst_rate": 9.0,
+    "cgst_total": 13500.00,
+    "sgst_rate": 9.0,
+    "sgst_total": 13500.00,
+    "igst_total": 0.00,
+    "total_tax": 27000.00,
+    "grand_total": 177000.00,
+    "line_items": [
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 10,
+        "rate": 10000.00,
+        "amount": 100000.00
+      },
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 20,
+        "rate": 2500.00,
+        "amount": 50000.00
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  }
+]

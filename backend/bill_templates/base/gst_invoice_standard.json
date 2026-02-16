@@ -1,0 +1,163 @@
+{
+  "template_id": "gst_invoice_standard",
+  "name": "Standard GST Invoice",
+  "layout_type": "standard_invoice",
+  "version": "1.0.0",
+  "detection": {
+    "keywords": ["GSTIN", "Invoice", "Tax Invoice"],
+    "min_matches": 2,
+    "regex": [
+      "Invoice\\s+No[:\\s]*(.*)",
+      "GSTIN[:\\s]*(\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}\\d{1}[A-Z]{1}\\d{1})"
+    ],
+    "layout_match": "standard_invoice",
+    "confidence_threshold": 0.7
+  },
+  "fields": {
+    "invoice_number": {
+      "method": "regex",
+      "pattern": "Invoice\\s+No[:\\s]*(.*?)(?:\\n|$)",
+      "aliases": ["Bill No", "Invoice #", "Inv No"],
+      "required": true,
+      "confidence_boost": 0.1
+    },
+    "date": {
+      "method": "regex",
+      "pattern": "Date[:\\s]*(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4})",
+      "aliases": ["Invoice Date", "Bill Date", "Dated"],
+      "required": true,
+      "format": "date"
+    },
+    "vendor_name": {
+      "method": "region",
+      "region": "header",
+      "keywords": ["From", "Vendor", "Seller"],
+      "extract_next_line": true
+    },
+    "vendor_gstin": {
+      "method": "regex",
+      "pattern": "GSTIN[:\\s]*(\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}\\d{1}[A-Z]{1}\\d{1})",
+      "required": true,
+      "validation": "gstin_format"
+    },
+    "buyer_name": {
+      "method": "region",
+      "region": "buyer_info",
+      "keywords": ["To", "Bill To", "Buyer", "Customer"],
+      "extract_next_line": true
+    },
+    "buyer_gstin": {
+      "method": "regex",
+      "pattern": "(?:Buyer|Customer)\\s+GSTIN[:\\s]*(\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}\\d{1}[A-Z]{1}\\d{1})",
+      "required": false
+    },
+    "subtotal": {
+      "method": "regex",
+      "pattern": "Subtotal[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "aliases": ["Sub Total", "Amount Before Tax"],
+      "type": "number"
+    },
+    "cgst_total": {
+      "method": "regex",
+      "pattern": "CGST[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "sgst_total": {
+      "method": "regex",
+      "pattern": "SGST[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "igst_total": {
+      "method": "regex",
+      "pattern": "IGST[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "grand_total": {
+      "method": "regex",
+      "pattern": "(?:Grand\\s+)?Total[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "aliases": ["Total Amount", "Amount Payable", "Net Amount"],
+      "required": true,
+      "type": "number"
+    }
+  },
+  "table": {
+    "detection": {
+      "header_keywords": ["Item", "Description", "Qty", "Rate", "Amount"],
+      "min_columns": 3,
+      "region": "items_table"
+    },
+    "columns": [
+      {
+        "name": "line_number",
+        "aliases": ["#", "S.No", "Sr.No"],
+        "type": "integer",
+        "required": false
+      },
+      {
+        "name": "description",
+        "aliases": ["Item", "Description", "Product", "Service", "Particulars"],
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "hsn_code",
+        "aliases": ["HSN", "HSN Code", "SAC", "HSN/SAC"],
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "quantity",
+        "aliases": ["Qty", "Quantity", "Nos"],
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "unit_price",
+        "aliases": ["Rate", "Price", "Unit Price", "Unit Rate"],
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "tax_rate",
+        "aliases": ["Tax %", "GST %", "Tax Rate"],
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "total",
+        "aliases": ["Amount", "Total", "Line Total"],
+        "type": "number",
+        "required": true
+      }
+    ],
+    "end_indicators": ["Subtotal", "Total", "Grand Total"]
+  },
+  "validation": {
+    "required_fields": ["invoice_number", "date", "vendor_gstin", "grand_total"],
+    "calculations": [
+      {
+        "rule": "subtotal + cgst_total + sgst_total + igst_total = grand_total",
+        "tolerance": 1.0
+      },
+      {
+        "rule": "sum(items.total) = subtotal",
+        "tolerance": 1.0
+      }
+    ]
+  },
+  "export_mapping": {
+    "excel_columns": [
+      "invoice_number",
+      "date",
+      "vendor_name",
+      "vendor_gstin",
+      "buyer_name",
+      "subtotal",
+      "cgst_total",
+      "sgst_total",
+      "igst_total",
+      "grand_total"
+    ],
+    "pdf_template": "standard_invoice_template.html"
+  }
+}

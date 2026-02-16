@@ -1,0 +1,51 @@
+@page "/settings"
+@using admin.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+
+<PageTitle>Settings - KiroTax AI</PageTitle>
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>System Settings</h1>
+    </div>
+
+    <div class="settings-container">
+        @foreach (var setting in settings)
+        {
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h5>@setting.Key</h5>
+                    <p class="text-muted">@setting.Description</p>
+                </div>
+                <div class="setting-value">
+                    <input type="text" class="form-control" @bind="setting.Value" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="mt-4">
+        <button class="btn btn-primary" @onclick="SaveSettings">
+            <i class="bi bi-save"></i> Save Settings
+        </button>
+    </div>
+</div>
+
+@code {
+    private List<SystemSetting> settings = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        settings = await DbContext.SystemSettings.ToListAsync();
+    }
+
+    private async Task SaveSettings()
+    {
+        foreach (var setting in settings)
+        {
+            setting.UpdatedAt = DateTime.UtcNow;
+        }
+        await DbContext.SaveChangesAsync();
+    }
+}

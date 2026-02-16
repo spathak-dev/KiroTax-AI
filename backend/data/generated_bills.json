@@ -1,0 +1,2032 @@
+[
+  {
+    "invoice_number": "INV-2025-001",
+    "invoice_date": "2025-12-01",
+    "vendor_name": "Software Licensing Corp",
+    "vendor_gstin": "29DEFGH7890I1J2",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 284501.35,
+    "cgst_rate": 0,
+    "cgst_total": 0,
+    "sgst_rate": 0,
+    "sgst_total": 0,
+    "igst_rate": 18.0,
+    "igst_total": 51210.24,
+    "total_tax": 51210.24,
+    "grand_total": 335711.59,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 15,
+        "rate": 12324.51,
+        "amount": 184867.65
+      },
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 2,
+        "rate": 4971.27,
+        "amount": 9942.54
+      },
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 10,
+        "rate": 3667.84,
+        "amount": 36678.35
+      },
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 11,
+        "rate": 4819.35,
+        "amount": 53012.8
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2026-002",
+    "invoice_date": "2026-02-11",
+    "vendor_name": "Accounting Firm",
+    "vendor_gstin": "24YZABC5678D9E0",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 193407.78,
+    "cgst_rate": 9.0,
+    "cgst_total": 17406.7,
+    "sgst_rate": 9.0,
+    "sgst_total": 17406.7,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 34813.4,
+    "grand_total": 228221.18,
+    "line_items": [
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 9,
+        "rate": 6765.19,
+        "amount": 60886.68
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 8,
+        "rate": 3481.74,
+        "amount": 27853.95
+      },
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 8,
+        "rate": 7042.91,
+        "amount": 56343.27
+      },
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 8,
+        "rate": 3819.48,
+        "amount": 30555.84
+      },
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 2,
+        "rate": 8884.02,
+        "amount": 17768.03
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-003",
+    "invoice_date": "2026-01-19",
+    "vendor_name": "Accounting Firm",
+    "vendor_gstin": "24YZABC5678D9E0",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 487398.87,
+    "cgst_rate": 9.0,
+    "cgst_total": 43865.9,
+    "sgst_rate": 9.0,
+    "sgst_total": 43865.9,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 87731.8,
+    "grand_total": 575130.67,
+    "line_items": [
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 1,
+        "rate": 6726.12,
+        "amount": 6726.12
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 4,
+        "rate": 13736.39,
+        "amount": 54945.55
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 18,
+        "rate": 11138.44,
+        "amount": 200491.93
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 5,
+        "rate": 8596.62,
+        "amount": 42983.1
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 16,
+        "rate": 11390.76,
+        "amount": 182252.16
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-004",
+    "invoice_date": "2025-11-27",
+    "vendor_name": "Cloud Services India",
+    "vendor_gstin": "19UVWXY4567M8N9",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 217014.74,
+    "cgst_rate": 9.0,
+    "cgst_total": 19531.33,
+    "sgst_rate": 9.0,
+    "sgst_total": 19531.33,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 39062.66,
+    "grand_total": 256077.4,
+    "line_items": [
+      {
+        "description": "Cloud Hosting Services",
+        "hsn_code": "998314",
+        "quantity": 9,
+        "rate": 10194.87,
+        "amount": 91753.85
+      },
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 19,
+        "rate": 5810.49,
+        "amount": 110399.34
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 7,
+        "rate": 2123.08,
+        "amount": 14861.55
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-005",
+    "invoice_date": "2026-01-30",
+    "vendor_name": "Training Institute",
+    "vendor_gstin": "29FGHIJ1234K5L6",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 142629.22,
+    "cgst_rate": 0,
+    "cgst_total": 0,
+    "sgst_rate": 0,
+    "sgst_total": 0,
+    "igst_rate": 18.0,
+    "igst_total": 25673.26,
+    "total_tax": 25673.26,
+    "grand_total": 168302.48,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 16,
+        "rate": 8914.33,
+        "amount": 142629.22
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2026-006",
+    "invoice_date": "2026-01-23",
+    "vendor_name": "Software Licensing Corp",
+    "vendor_gstin": "29DEFGH7890I1J2",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 631747.09,
+    "cgst_rate": 9.0,
+    "cgst_total": 56857.24,
+    "sgst_rate": 9.0,
+    "sgst_total": 56857.24,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 113714.48,
+    "grand_total": 745461.57,
+    "line_items": [
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 7,
+        "rate": 16828.3,
+        "amount": 117798.1
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 2,
+        "rate": 16142.52,
+        "amount": 32285.04
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 18,
+        "rate": 26759.11,
+        "amount": 481663.94
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-007",
+    "invoice_date": "2025-11-27",
+    "vendor_name": "Software Licensing Corp",
+    "vendor_gstin": "29DEFGH7890I1J2",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 70663.21,
+    "cgst_rate": 9.0,
+    "cgst_total": 6359.69,
+    "sgst_rate": 9.0,
+    "sgst_total": 6359.69,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 12719.38,
+    "grand_total": 83382.59,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 2,
+        "rate": 7757.68,
+        "amount": 15515.36
+      },
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 14,
+        "rate": 3939.13,
+        "amount": 55147.85
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-008",
+    "invoice_date": "2025-12-05",
+    "vendor_name": "Hardware Suppliers",
+    "vendor_gstin": "33OPQRS2345T6U7",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 205927.19,
+    "cgst_rate": 9.0,
+    "cgst_total": 18533.45,
+    "sgst_rate": 9.0,
+    "sgst_total": 18533.45,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 37066.9,
+    "grand_total": 242994.09,
+    "line_items": [
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 19,
+        "rate": 6927.02,
+        "amount": 131613.44
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 19,
+        "rate": 3911.25,
+        "amount": 74313.75
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-009",
+    "invoice_date": "2026-02-05",
+    "vendor_name": "Consulting Services Pvt Ltd",
+    "vendor_gstin": "24ABCDE5678F9G0",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 71769.69,
+    "cgst_rate": 9.0,
+    "cgst_total": 6459.27,
+    "sgst_rate": 9.0,
+    "sgst_total": 6459.27,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 12918.54,
+    "grand_total": 84688.23,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 9,
+        "rate": 7974.41,
+        "amount": 71769.69
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-010",
+    "invoice_date": "2025-11-26",
+    "vendor_name": "Software Licensing Corp",
+    "vendor_gstin": "29DEFGH7890I1J2",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 1508506.38,
+    "cgst_rate": 9.0,
+    "cgst_total": 135765.57,
+    "sgst_rate": 9.0,
+    "sgst_total": 135765.57,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 271531.14,
+    "grand_total": 1780037.52,
+    "line_items": [
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 14,
+        "rate": 79171.54,
+        "amount": 1108401.58
+      },
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 10,
+        "rate": 28306.26,
+        "amount": 283062.63
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 2,
+        "rate": 19132.99,
+        "amount": 38265.97
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 13,
+        "rate": 6059.71,
+        "amount": 78776.2
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-011",
+    "invoice_date": "2025-11-18",
+    "vendor_name": "Marketing Agency",
+    "vendor_gstin": "27KLMNO3456P7Q8",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 66661.95,
+    "cgst_rate": 0,
+    "cgst_total": 0,
+    "sgst_rate": 0,
+    "sgst_total": 0,
+    "igst_rate": 18.0,
+    "igst_total": 11999.15,
+    "total_tax": 11999.15,
+    "grand_total": 78661.1,
+    "line_items": [
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 20,
+        "rate": 3333.1,
+        "amount": 66661.95
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2026-012",
+    "invoice_date": "2026-01-11",
+    "vendor_name": "Hardware Suppliers",
+    "vendor_gstin": "33OPQRS2345T6U7",
+    "customer_name": "Digital Marketing Ltd",
+    "customer_gstin": "29STUVW7890P1Q2",
+    "subtotal": 310270.8,
+    "cgst_rate": 9.0,
+    "cgst_total": 27924.37,
+    "sgst_rate": 9.0,
+    "sgst_total": 27924.37,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 55848.74,
+    "grand_total": 366119.54,
+    "line_items": [
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 12,
+        "rate": 3655.66,
+        "amount": 43867.88
+      },
+      {
+        "description": "Cloud Hosting Services",
+        "hsn_code": "998314",
+        "quantity": 20,
+        "rate": 11882.62,
+        "amount": 237652.35
+      },
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 10,
+        "rate": 2875.06,
+        "amount": 28750.57
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-013",
+    "invoice_date": "2025-11-18",
+    "vendor_name": "Accounting Firm",
+    "vendor_gstin": "24YZABC5678D9E0",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 98784.11,
+    "cgst_rate": 9.0,
+    "cgst_total": 8890.57,
+    "sgst_rate": 9.0,
+    "sgst_total": 8890.57,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 17781.14,
+    "grand_total": 116565.25,
+    "line_items": [
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 4,
+        "rate": 24696.03,
+        "amount": 98784.11
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-014",
+    "invoice_date": "2025-12-25",
+    "vendor_name": "Software Licensing Corp",
+    "vendor_gstin": "29DEFGH7890I1J2",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 270315.15,
+    "cgst_rate": 9.0,
+    "cgst_total": 24328.36,
+    "sgst_rate": 9.0,
+    "sgst_total": 24328.36,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 48656.72,
+    "grand_total": 318971.87,
+    "line_items": [
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 1,
+        "rate": 9412.37,
+        "amount": 9412.37
+      },
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 19,
+        "rate": 4092.48,
+        "amount": 77757.2
+      },
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 12,
+        "rate": 13440.56,
+        "amount": 161286.68
+      },
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 3,
+        "rate": 7286.3,
+        "amount": 21858.9
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-015",
+    "invoice_date": "2026-02-08",
+    "vendor_name": "Cloud Services India",
+    "vendor_gstin": "19UVWXY4567M8N9",
+    "customer_name": "Digital Marketing Ltd",
+    "customer_gstin": "29STUVW7890P1Q2",
+    "subtotal": 480309.15,
+    "cgst_rate": 9.0,
+    "cgst_total": 43227.82,
+    "sgst_rate": 9.0,
+    "sgst_total": 43227.82,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 86455.64,
+    "grand_total": 566764.79,
+    "line_items": [
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 7,
+        "rate": 12717.46,
+        "amount": 89022.22
+      },
+      {
+        "description": "Networking Equipment",
+        "hsn_code": "851762",
+        "quantity": 1,
+        "rate": 5626.47,
+        "amount": 5626.47
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 15,
+        "rate": 19412.3,
+        "amount": 291184.5
+      },
+      {
+        "description": "Networking Equipment",
+        "hsn_code": "851762",
+        "quantity": 8,
+        "rate": 11809.49,
+        "amount": 94475.95
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-016",
+    "invoice_date": "2025-12-22",
+    "vendor_name": "Training Institute",
+    "vendor_gstin": "29FGHIJ1234K5L6",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 178310.14,
+    "cgst_rate": 9.0,
+    "cgst_total": 16047.91,
+    "sgst_rate": 9.0,
+    "sgst_total": 16047.91,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 32095.82,
+    "grand_total": 210405.96,
+    "line_items": [
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 15,
+        "rate": 4194.19,
+        "amount": 62912.87
+      },
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 17,
+        "rate": 6344.95,
+        "amount": 107864.09
+      },
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 1,
+        "rate": 7533.17,
+        "amount": 7533.17
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-017",
+    "invoice_date": "2025-12-17",
+    "vendor_name": "Office Supplies Co",
+    "vendor_gstin": "07PQRST9012K3L4",
+    "customer_name": "Digital Marketing Ltd",
+    "customer_gstin": "29STUVW7890P1Q2",
+    "subtotal": 548450.29,
+    "cgst_rate": 9.0,
+    "cgst_total": 49360.53,
+    "sgst_rate": 9.0,
+    "sgst_total": 49360.53,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 98721.06,
+    "grand_total": 647171.35,
+    "line_items": [
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 19,
+        "rate": 17985.54,
+        "amount": 341725.35
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 10,
+        "rate": 20672.49,
+        "amount": 206724.94
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-018",
+    "invoice_date": "2026-02-03",
+    "vendor_name": "Accounting Firm",
+    "vendor_gstin": "24YZABC5678D9E0",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 621831.47,
+    "cgst_rate": 9.0,
+    "cgst_total": 55964.83,
+    "sgst_rate": 9.0,
+    "sgst_total": 55964.83,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 111929.66,
+    "grand_total": 733761.13,
+    "line_items": [
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 3,
+        "rate": 22525.98,
+        "amount": 67577.94
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 11,
+        "rate": 37260.04,
+        "amount": 409860.41
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 7,
+        "rate": 20627.59,
+        "amount": 144393.12
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-019",
+    "invoice_date": "2025-12-20",
+    "vendor_name": "Hardware Suppliers",
+    "vendor_gstin": "33OPQRS2345T6U7",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 206577.21,
+    "cgst_rate": 9.0,
+    "cgst_total": 18591.95,
+    "sgst_rate": 9.0,
+    "sgst_total": 18591.95,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 37183.9,
+    "grand_total": 243761.11,
+    "line_items": [
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 19,
+        "rate": 4495.85,
+        "amount": 85421.24
+      },
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 14,
+        "rate": 6198.84,
+        "amount": 86783.81
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 14,
+        "rate": 1776.01,
+        "amount": 24864.14
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 2,
+        "rate": 4754.01,
+        "amount": 9508.03
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-020",
+    "invoice_date": "2025-12-09",
+    "vendor_name": "Legal Services LLP",
+    "vendor_gstin": "06RSTUV9012W3X4",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 156522.53,
+    "cgst_rate": 0,
+    "cgst_total": 0,
+    "sgst_rate": 0,
+    "sgst_total": 0,
+    "igst_rate": 18.0,
+    "igst_total": 28174.06,
+    "total_tax": 28174.06,
+    "grand_total": 184696.59,
+    "line_items": [
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 2,
+        "rate": 25190.42,
+        "amount": 50380.83
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 17,
+        "rate": 6243.63,
+        "amount": 106141.69
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2026-021",
+    "invoice_date": "2026-01-25",
+    "vendor_name": "Legal Services LLP",
+    "vendor_gstin": "06RSTUV9012W3X4",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 267776.95,
+    "cgst_rate": 0,
+    "cgst_total": 0,
+    "sgst_rate": 0,
+    "sgst_total": 0,
+    "igst_rate": 18.0,
+    "igst_total": 48199.85,
+    "total_tax": 48199.85,
+    "grand_total": 315976.8,
+    "line_items": [
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 12,
+        "rate": 22314.75,
+        "amount": 267776.95
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2026-022",
+    "invoice_date": "2026-02-05",
+    "vendor_name": "Office Supplies Co",
+    "vendor_gstin": "07PQRST9012K3L4",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 149940.4,
+    "cgst_rate": 9.0,
+    "cgst_total": 13494.64,
+    "sgst_rate": 9.0,
+    "sgst_total": 13494.64,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 26989.28,
+    "grand_total": 176929.68,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 14,
+        "rate": 6963.22,
+        "amount": 97485.02
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 6,
+        "rate": 2297.04,
+        "amount": 13782.27
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 7,
+        "rate": 3451.07,
+        "amount": 24157.5
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 12,
+        "rate": 1209.63,
+        "amount": 14515.61
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-023",
+    "invoice_date": "2025-12-03",
+    "vendor_name": "Consulting Services Pvt Ltd",
+    "vendor_gstin": "24ABCDE5678F9G0",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 1228595.04,
+    "cgst_rate": 9.0,
+    "cgst_total": 110573.55,
+    "sgst_rate": 9.0,
+    "sgst_total": 110573.55,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 221147.1,
+    "grand_total": 1449742.14,
+    "line_items": [
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 19,
+        "rate": 40509.08,
+        "amount": 769672.47
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 9,
+        "rate": 50991.4,
+        "amount": 458922.57
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-024",
+    "invoice_date": "2025-12-28",
+    "vendor_name": "Cloud Services India",
+    "vendor_gstin": "19UVWXY4567M8N9",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 570979.62,
+    "cgst_rate": 9.0,
+    "cgst_total": 51388.17,
+    "sgst_rate": 9.0,
+    "sgst_total": 51388.17,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 102776.34,
+    "grand_total": 673755.96,
+    "line_items": [
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 9,
+        "rate": 22533.64,
+        "amount": 202802.8
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 7,
+        "rate": 52596.69,
+        "amount": 368176.82
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-025",
+    "invoice_date": "2025-12-27",
+    "vendor_name": "Office Supplies Co",
+    "vendor_gstin": "07PQRST9012K3L4",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 196447.09,
+    "cgst_rate": 9.0,
+    "cgst_total": 17680.24,
+    "sgst_rate": 9.0,
+    "sgst_total": 17680.24,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 35360.48,
+    "grand_total": 231807.57,
+    "line_items": [
+      {
+        "description": "Cloud Hosting Services",
+        "hsn_code": "998314",
+        "quantity": 11,
+        "rate": 10883.8,
+        "amount": 119721.83
+      },
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 9,
+        "rate": 5038.91,
+        "amount": 45350.17
+      },
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 4,
+        "rate": 7843.77,
+        "amount": 31375.1
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-026",
+    "invoice_date": "2025-12-30",
+    "vendor_name": "Marketing Agency",
+    "vendor_gstin": "27KLMNO3456P7Q8",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 122686.05,
+    "cgst_rate": 9.0,
+    "cgst_total": 11041.74,
+    "sgst_rate": 9.0,
+    "sgst_total": 11041.74,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 22083.48,
+    "grand_total": 144769.53,
+    "line_items": [
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 14,
+        "rate": 5967.9,
+        "amount": 83550.65
+      },
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 13,
+        "rate": 2093.78,
+        "amount": 27219.12
+      },
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 2,
+        "rate": 5958.14,
+        "amount": 11916.28
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-027",
+    "invoice_date": "2026-01-11",
+    "vendor_name": "Training Institute",
+    "vendor_gstin": "29FGHIJ1234K5L6",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 32354.38,
+    "cgst_rate": 9.0,
+    "cgst_total": 2911.89,
+    "sgst_rate": 9.0,
+    "sgst_total": 2911.89,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 5823.78,
+    "grand_total": 38178.16,
+    "line_items": [
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 11,
+        "rate": 1938.6,
+        "amount": 21324.65
+      },
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 2,
+        "rate": 5514.86,
+        "amount": 11029.73
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-028",
+    "invoice_date": "2026-02-15",
+    "vendor_name": "Training Institute",
+    "vendor_gstin": "29FGHIJ1234K5L6",
+    "customer_name": "Digital Marketing Ltd",
+    "customer_gstin": "29STUVW7890P1Q2",
+    "subtotal": 271017.56,
+    "cgst_rate": 9.0,
+    "cgst_total": 24391.58,
+    "sgst_rate": 9.0,
+    "sgst_total": 24391.58,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 48783.16,
+    "grand_total": 319800.72,
+    "line_items": [
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 17,
+        "rate": 7514.4,
+        "amount": 127744.78
+      },
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 1,
+        "rate": 3203.76,
+        "amount": 3203.76
+      },
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 18,
+        "rate": 7781.61,
+        "amount": 140069.01
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-029",
+    "invoice_date": "2025-12-14",
+    "vendor_name": "Cloud Services India",
+    "vendor_gstin": "19UVWXY4567M8N9",
+    "customer_name": "Digital Marketing Ltd",
+    "customer_gstin": "29STUVW7890P1Q2",
+    "subtotal": 246758.37,
+    "cgst_rate": 9.0,
+    "cgst_total": 22208.25,
+    "sgst_rate": 9.0,
+    "sgst_total": 22208.25,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 44416.5,
+    "grand_total": 291174.87,
+    "line_items": [
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 16,
+        "rate": 6492.26,
+        "amount": 103876.15
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 15,
+        "rate": 4767.1,
+        "amount": 71506.54
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 9,
+        "rate": 1350.23,
+        "amount": 12152.07
+      },
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 19,
+        "rate": 3117.03,
+        "amount": 59223.61
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-030",
+    "invoice_date": "2026-01-11",
+    "vendor_name": "Marketing Agency",
+    "vendor_gstin": "27KLMNO3456P7Q8",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 6804.91,
+    "cgst_rate": 9.0,
+    "cgst_total": 612.44,
+    "sgst_rate": 9.0,
+    "sgst_total": 612.44,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 1224.88,
+    "grand_total": 8029.79,
+    "line_items": [
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 5,
+        "rate": 1360.98,
+        "amount": 6804.91
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-031",
+    "invoice_date": "2026-02-15",
+    "vendor_name": "Hardware Suppliers",
+    "vendor_gstin": "33OPQRS2345T6U7",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 147307.58,
+    "cgst_rate": 9.0,
+    "cgst_total": 13257.68,
+    "sgst_rate": 9.0,
+    "sgst_total": 13257.68,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 26515.36,
+    "grand_total": 173822.94,
+    "line_items": [
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 16,
+        "rate": 7800.57,
+        "amount": 124809.2
+      },
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 2,
+        "rate": 11249.19,
+        "amount": 22498.38
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-032",
+    "invoice_date": "2026-01-19",
+    "vendor_name": "Software Licensing Corp",
+    "vendor_gstin": "29DEFGH7890I1J2",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 435320.88,
+    "cgst_rate": 9.0,
+    "cgst_total": 39178.88,
+    "sgst_rate": 9.0,
+    "sgst_total": 39178.88,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 78357.76,
+    "grand_total": 513678.64,
+    "line_items": [
+      {
+        "description": "Networking Equipment",
+        "hsn_code": "851762",
+        "quantity": 10,
+        "rate": 13335.99,
+        "amount": 133359.88
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 4,
+        "rate": 75490.25,
+        "amount": 301961.0
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-033",
+    "invoice_date": "2025-12-27",
+    "vendor_name": "Office Supplies Co",
+    "vendor_gstin": "07PQRST9012K3L4",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 303483.92,
+    "cgst_rate": 9.0,
+    "cgst_total": 27313.55,
+    "sgst_rate": 9.0,
+    "sgst_total": 27313.55,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 54627.1,
+    "grand_total": 358111.02,
+    "line_items": [
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 8,
+        "rate": 8886.02,
+        "amount": 71088.19
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 3,
+        "rate": 77465.25,
+        "amount": 232395.74
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-034",
+    "invoice_date": "2026-01-23",
+    "vendor_name": "Office Supplies Co",
+    "vendor_gstin": "07PQRST9012K3L4",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 298057.92,
+    "cgst_rate": 0,
+    "cgst_total": 0,
+    "sgst_rate": 0,
+    "sgst_total": 0,
+    "igst_rate": 18.0,
+    "igst_total": 53650.43,
+    "total_tax": 53650.43,
+    "grand_total": 351708.35,
+    "line_items": [
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 7,
+        "rate": 1418.7,
+        "amount": 9930.92
+      },
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 15,
+        "rate": 1438.42,
+        "amount": 21576.34
+      },
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 17,
+        "rate": 14329.89,
+        "amount": 243608.15
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 9,
+        "rate": 2549.17,
+        "amount": 22942.52
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2026-035",
+    "invoice_date": "2026-01-29",
+    "vendor_name": "Hardware Suppliers",
+    "vendor_gstin": "33OPQRS2345T6U7",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 1568869.58,
+    "cgst_rate": 0,
+    "cgst_total": 0,
+    "sgst_rate": 0,
+    "sgst_total": 0,
+    "igst_rate": 18.0,
+    "igst_total": 282396.52,
+    "total_tax": 282396.52,
+    "grand_total": 1851266.1,
+    "line_items": [
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 10,
+        "rate": 14620.71,
+        "amount": 146207.06
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 7,
+        "rate": 62812.18,
+        "amount": 439685.25
+      },
+      {
+        "description": "Networking Equipment",
+        "hsn_code": "851762",
+        "quantity": 12,
+        "rate": 5937.76,
+        "amount": 71253.12
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 13,
+        "rate": 57523.75,
+        "amount": 747808.75
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 11,
+        "rate": 14901.4,
+        "amount": 163915.41
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2026-036",
+    "invoice_date": "2026-02-04",
+    "vendor_name": "Legal Services LLP",
+    "vendor_gstin": "06RSTUV9012W3X4",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 285225.83,
+    "cgst_rate": 9.0,
+    "cgst_total": 25670.32,
+    "sgst_rate": 9.0,
+    "sgst_total": 25670.32,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 51340.64,
+    "grand_total": 336566.47,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 6,
+        "rate": 5489.17,
+        "amount": 32935.01
+      },
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 18,
+        "rate": 11717.54,
+        "amount": 210915.66
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 11,
+        "rate": 3761.38,
+        "amount": 41375.16
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-037",
+    "invoice_date": "2026-01-23",
+    "vendor_name": "Cloud Services India",
+    "vendor_gstin": "19UVWXY4567M8N9",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 1065582.97,
+    "cgst_rate": 0,
+    "cgst_total": 0,
+    "sgst_rate": 0,
+    "sgst_total": 0,
+    "igst_rate": 18.0,
+    "igst_total": 191804.93,
+    "total_tax": 191804.93,
+    "grand_total": 1257387.9,
+    "line_items": [
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 11,
+        "rate": 38467.35,
+        "amount": 423140.85
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 6,
+        "rate": 11026.78,
+        "amount": 66160.67
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 16,
+        "rate": 8361.49,
+        "amount": 133783.84
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 6,
+        "rate": 73749.6,
+        "amount": 442497.61
+      }
+    ],
+    "place_of_supply": "Maharashtra",
+    "is_interstate": true
+  },
+  {
+    "invoice_number": "INV-2025-038",
+    "invoice_date": "2025-12-09",
+    "vendor_name": "Tech Solutions Pvt Ltd",
+    "vendor_gstin": "29ABCDE1234F1Z5",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 2189357.53,
+    "cgst_rate": 9.0,
+    "cgst_total": 197042.18,
+    "sgst_rate": 9.0,
+    "sgst_total": 197042.18,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 394084.36,
+    "grand_total": 2583441.89,
+    "line_items": [
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 17,
+        "rate": 70609.02,
+        "amount": 1200353.33
+      },
+      {
+        "description": "Networking Equipment",
+        "hsn_code": "851762",
+        "quantity": 6,
+        "rate": 9106.79,
+        "amount": 54640.76
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 19,
+        "rate": 26908.81,
+        "amount": 511267.41
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 9,
+        "rate": 47010.67,
+        "amount": 423096.03
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-039",
+    "invoice_date": "2026-01-08",
+    "vendor_name": "Office Supplies Co",
+    "vendor_gstin": "07PQRST9012K3L4",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 118289.01,
+    "cgst_rate": 9.0,
+    "cgst_total": 10646.01,
+    "sgst_rate": 9.0,
+    "sgst_total": 10646.01,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 21292.02,
+    "grand_total": 139581.03,
+    "line_items": [
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 15,
+        "rate": 1982.31,
+        "amount": 29734.71
+      },
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 20,
+        "rate": 4427.72,
+        "amount": 88554.3
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-040",
+    "invoice_date": "2026-01-13",
+    "vendor_name": "Consulting Services Pvt Ltd",
+    "vendor_gstin": "24ABCDE5678F9G0",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 1233605.16,
+    "cgst_rate": 9.0,
+    "cgst_total": 111024.46,
+    "sgst_rate": 9.0,
+    "sgst_total": 111024.46,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 222048.92,
+    "grand_total": 1455654.08,
+    "line_items": [
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 20,
+        "rate": 21273.74,
+        "amount": 425474.79
+      },
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 3,
+        "rate": 32432.72,
+        "amount": 97298.17
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 13,
+        "rate": 54679.4,
+        "amount": 710832.2
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-041",
+    "invoice_date": "2025-12-04",
+    "vendor_name": "Office Supplies Co",
+    "vendor_gstin": "07PQRST9012K3L4",
+    "customer_name": "Tech Startup Inc",
+    "customer_gstin": "29VWXYZ6789A1B2",
+    "subtotal": 803992.2,
+    "cgst_rate": 9.0,
+    "cgst_total": 72359.3,
+    "sgst_rate": 9.0,
+    "sgst_total": 72359.3,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 144718.6,
+    "grand_total": 948710.8,
+    "line_items": [
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 9,
+        "rate": 55183.67,
+        "amount": 496653.06
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 3,
+        "rate": 12820.28,
+        "amount": 38460.85
+      },
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 11,
+        "rate": 13808.14,
+        "amount": 151889.57
+      },
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 2,
+        "rate": 13777.25,
+        "amount": 27554.49
+      },
+      {
+        "description": "Networking Equipment",
+        "hsn_code": "851762",
+        "quantity": 7,
+        "rate": 12776.32,
+        "amount": 89434.22
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-042",
+    "invoice_date": "2026-02-15",
+    "vendor_name": "Marketing Agency",
+    "vendor_gstin": "27KLMNO3456P7Q8",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 683653.01,
+    "cgst_rate": 9.0,
+    "cgst_total": 61528.77,
+    "sgst_rate": 9.0,
+    "sgst_total": 61528.77,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 123057.54,
+    "grand_total": 806710.55,
+    "line_items": [
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 18,
+        "rate": 23088.39,
+        "amount": 415591.07
+      },
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 4,
+        "rate": 16239.1,
+        "amount": 64956.38
+      },
+      {
+        "description": "External Monitors",
+        "hsn_code": "852852",
+        "quantity": 15,
+        "rate": 13540.37,
+        "amount": 203105.56
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-043",
+    "invoice_date": "2026-02-14",
+    "vendor_name": "Cloud Services India",
+    "vendor_gstin": "19UVWXY4567M8N9",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 218029.29,
+    "cgst_rate": 9.0,
+    "cgst_total": 19622.64,
+    "sgst_rate": 9.0,
+    "sgst_total": 19622.64,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 39245.28,
+    "grand_total": 257274.57,
+    "line_items": [
+      {
+        "description": "Office Furniture",
+        "hsn_code": "940330",
+        "quantity": 14,
+        "rate": 15573.52,
+        "amount": 218029.29
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-044",
+    "invoice_date": "2026-01-31",
+    "vendor_name": "Hardware Suppliers",
+    "vendor_gstin": "33OPQRS2345T6U7",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 394014.87,
+    "cgst_rate": 9.0,
+    "cgst_total": 35461.34,
+    "sgst_rate": 9.0,
+    "sgst_total": 35461.34,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 70922.68,
+    "grand_total": 464937.55,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 14,
+        "rate": 10664.22,
+        "amount": 149299.1
+      },
+      {
+        "description": "Digital Marketing",
+        "hsn_code": "998313",
+        "quantity": 16,
+        "rate": 6360.8,
+        "amount": 101772.77
+      },
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 16,
+        "rate": 3468.12,
+        "amount": 55489.85
+      },
+      {
+        "description": "Business Consulting",
+        "hsn_code": "998313",
+        "quantity": 2,
+        "rate": 9410.46,
+        "amount": 18820.92
+      },
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 14,
+        "rate": 4902.3,
+        "amount": 68632.22
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-045",
+    "invoice_date": "2025-12-29",
+    "vendor_name": "Marketing Agency",
+    "vendor_gstin": "27KLMNO3456P7Q8",
+    "customer_name": "Digital Marketing Ltd",
+    "customer_gstin": "29STUVW7890P1Q2",
+    "subtotal": 960272.76,
+    "cgst_rate": 9.0,
+    "cgst_total": 86424.55,
+    "sgst_rate": 9.0,
+    "sgst_total": 86424.55,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 172849.1,
+    "grand_total": 1133121.86,
+    "line_items": [
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 15,
+        "rate": 30977.65,
+        "amount": 464664.71
+      },
+      {
+        "description": "Laptop Computers",
+        "hsn_code": "847130",
+        "quantity": 7,
+        "rate": 70801.15,
+        "amount": 495608.04
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-046",
+    "invoice_date": "2026-01-15",
+    "vendor_name": "Tech Solutions Pvt Ltd",
+    "vendor_gstin": "29ABCDE1234F1Z5",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 126184.1,
+    "cgst_rate": 9.0,
+    "cgst_total": 11356.57,
+    "sgst_rate": 9.0,
+    "sgst_total": 11356.57,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 22713.14,
+    "grand_total": 148897.24,
+    "line_items": [
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 10,
+        "rate": 4470.86,
+        "amount": 44708.57
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 19,
+        "rate": 4288.19,
+        "amount": 81475.53
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-047",
+    "invoice_date": "2026-01-09",
+    "vendor_name": "Tech Solutions Pvt Ltd",
+    "vendor_gstin": "29ABCDE1234F1Z5",
+    "customer_name": "ABC Enterprises",
+    "customer_gstin": "27XYZAB5678G2H3",
+    "subtotal": 195558.33,
+    "cgst_rate": 9.0,
+    "cgst_total": 17600.25,
+    "sgst_rate": 9.0,
+    "sgst_total": 17600.25,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 35200.5,
+    "grand_total": 230758.83,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 17,
+        "rate": 11503.43,
+        "amount": 195558.33
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-048",
+    "invoice_date": "2026-01-28",
+    "vendor_name": "Software Licensing Corp",
+    "vendor_gstin": "29DEFGH7890I1J2",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 246124.06,
+    "cgst_rate": 9.0,
+    "cgst_total": 22151.17,
+    "sgst_rate": 9.0,
+    "sgst_total": 22151.17,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 44302.34,
+    "grand_total": 290426.4,
+    "line_items": [
+      {
+        "description": "Legal Advisory",
+        "hsn_code": "998212",
+        "quantity": 6,
+        "rate": 13113.49,
+        "amount": 78680.95
+      },
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 16,
+        "rate": 2845.3,
+        "amount": 45524.83
+      },
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 16,
+        "rate": 3473.43,
+        "amount": 55574.95
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 4,
+        "rate": 3289.15,
+        "amount": 13156.6
+      },
+      {
+        "description": "Training Programs",
+        "hsn_code": "999293",
+        "quantity": 16,
+        "rate": 3324.17,
+        "amount": 53186.73
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2026-049",
+    "invoice_date": "2026-01-15",
+    "vendor_name": "Cloud Services India",
+    "vendor_gstin": "19UVWXY4567M8N9",
+    "customer_name": "XYZ Corporation",
+    "customer_gstin": "29LMNOP3456Q7R8",
+    "subtotal": 48947.53,
+    "cgst_rate": 9.0,
+    "cgst_total": 4405.28,
+    "sgst_rate": 9.0,
+    "sgst_total": 4405.28,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 8810.56,
+    "grand_total": 57758.09,
+    "line_items": [
+      {
+        "description": "Accounting Services",
+        "hsn_code": "998211",
+        "quantity": 5,
+        "rate": 4377.43,
+        "amount": 21887.16
+      },
+      {
+        "description": "Software Development Services",
+        "hsn_code": "998314",
+        "quantity": 8,
+        "rate": 3382.55,
+        "amount": 27060.37
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  },
+  {
+    "invoice_number": "INV-2025-050",
+    "invoice_date": "2025-12-29",
+    "vendor_name": "Hardware Suppliers",
+    "vendor_gstin": "33OPQRS2345T6U7",
+    "customer_name": "Manufacturing Co",
+    "customer_gstin": "06HIJKL1234M5N6",
+    "subtotal": 344667.54,
+    "cgst_rate": 9.0,
+    "cgst_total": 31020.08,
+    "sgst_rate": 9.0,
+    "sgst_total": 31020.08,
+    "igst_rate": 0,
+    "igst_total": 0,
+    "total_tax": 62040.16,
+    "grand_total": 406707.7,
+    "line_items": [
+      {
+        "description": "Printers",
+        "hsn_code": "844332",
+        "quantity": 14,
+        "rate": 24619.11,
+        "amount": 344667.54
+      }
+    ],
+    "place_of_supply": "Karnataka",
+    "is_interstate": false
+  }
+]

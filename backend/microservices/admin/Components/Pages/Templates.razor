@@ -1,0 +1,132 @@
+@page "/templates"
+@using admin.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+
+<PageTitle>Template Management - KiroTax AI</PageTitle>
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>Template Management</h1>
+        <div class="stats-summary">
+            <span class="stat-item">Total: <strong>@templates.Count</strong></span>
+            <span class="stat-item">Published: <strong>@templates.Count(t => t.Status == "published")</strong></span>
+            <span class="stat-item">Pending: <strong>@templates.Count(t => t.Status == "pending_review")</strong></span>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" class="form-control" placeholder="Search templates..." @bind="searchTerm" @bind:event="oninput" />
+        <select class="form-select" @bind="filterStatus">
+            <option value="">All Status</option>
+            <option value="pending_review">Pending Review</option>
+            <option value="published">Published</option>
+            <option value="rejected">Rejected</option>
+        </select>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Downloads</th>
+                    <th>Rating</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var template in FilteredTemplates)
+                {
+                    <tr>
+                        <td>@template.Id</td>
+                        <td>@template.Name</td>
+                        <td><span class="badge bg-info">@template.Category</span></td>
+                        <td>@(template.Price == 0 ? "Free" : $"₹{template.Price}")</td>
+                        <td>@template.DownloadCount</td>
+                        <td>
+                            <span class="rating">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <i class="bi bi-star@(i <= template.Rating ? "-fill" : "")"></i>
+                                }
+                            </span>
+                        </td>
+                        <td><span class="badge bg-@GetStatusBadgeColor(template.Status)">@template.Status</span></td>
+                        <td>@template.CreatedAt.ToString("MMM dd, yyyy")</td>
+                        <td>
+                            @if (template.Status == "pending_review")
+                            {
+                                <button class="btn btn-sm btn-success" @onclick="() => ApproveTemplate(template)">
+                                    <i class="bi bi-check-circle"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" @onclick="() => RejectTemplate(template)">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-sm btn-outline-primary" @onclick="() => ViewTemplate(template)">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<Template> templates = new();
+    private string searchTerm = "";
+    private string filterStatus = "";
+
+    private IEnumerable<Template> FilteredTemplates => templates
+        .Where(t => string.IsNullOrEmpty(searchTerm) || 
+                    t.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+        .Where(t => string.IsNullOrEmpty(filterStatus) || t.Status == filterStatus);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadTemplates();
+    }
+
+    private async Task LoadTemplates()
+    {
+        templates = await DbContext.Templates.OrderByDescending(t => t.CreatedAt).ToListAsync();
+    }
+
+    private async Task ApproveTemplate(Template template)
+    {
+        template.Status = "published";
+        await DbContext.SaveChangesAsync();
+        await LoadTemplates();
+    }
+
+    private async Task RejectTemplate(Template template)
+    {
+        template.Status = "rejected";
+        await DbContext.SaveChangesAsync();
+        await LoadTemplates();
+    }
+
+    private void ViewTemplate(Template template)
+    {
+        // View template details
+    }
+
+    private string GetStatusBadgeColor(string status) => status switch
+    {
+        "pending_review" => "warning",
+        "published" => "success",
+        "rejected" => "danger",
+        _ => "secondary"
+    };
+}

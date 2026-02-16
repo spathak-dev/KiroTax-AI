@@ -1,0 +1,40 @@
+@page "/activity"
+@using admin.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+
+<PageTitle>Activity Log - KiroTax AI</PageTitle>
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>Activity Log</h1>
+    </div>
+
+    <div class="activity-log">
+        @foreach (var activity in activities)
+        {
+            <div class="activity-item">
+                <div class="activity-icon">
+                    <i class="bi bi-@activity.Icon"></i>
+                </div>
+                <div class="activity-details">
+                    <h6>@activity.Action</h6>
+                    <p>@activity.Description</p>
+                    <small class="text-muted">@activity.Timestamp.ToString("MMM dd, yyyy HH:mm:ss")</small>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<ActivityLog> activities = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        activities = await DbContext.ActivityLogs
+            .OrderByDescending(a => a.Timestamp)
+            .Take(100)
+            .ToListAsync();
+    }
+}

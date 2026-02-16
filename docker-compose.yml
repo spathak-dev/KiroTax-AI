@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: kirotax-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: kirotax2024
+      MONGO_INITDB_DATABASE: kirotax_ai
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - kirotax-network
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: kirotax-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URL=mongodb://admin:kirotax2024@mongodb:27017
+      - DATABASE_NAME=kirotax_ai
+      - SECRET_KEY=your-production-secret-key-change-this
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/app
+      - backend_storage:/app/storage
+    networks:
+      - kirotax-network
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kirotax-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - kirotax-network
+
+volumes:
+  mongodb_data:
+  backend_storage:
+
+networks:
+  kirotax-network:
+    driver: bridge

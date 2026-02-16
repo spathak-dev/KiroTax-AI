@@ -1,0 +1,82 @@
+{
+  "template_id": "restaurant_bill",
+  "name": "Restaurant Bill",
+  "layout_type": "long_receipt",
+  "version": "1.0.0",
+  "detection": {
+    "keywords": ["Restaurant", "Table", "Waiter", "Thank You", "Visit Again"],
+    "min_matches": 2,
+    "layout_match": "long_receipt",
+    "confidence_threshold": 0.65
+  },
+  "fields": {
+    "bill_number": {
+      "method": "regex",
+      "pattern": "(?:Bill|Token)\\s+No[:\\s]*(.*?)(?:\\n|$)",
+      "required": true
+    },
+    "table_number": {
+      "method": "regex",
+      "pattern": "Table[:\\s]*(\\d+)",
+      "required": false
+    },
+    "date": {
+      "method": "regex",
+      "pattern": "(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4})",
+      "required": true
+    },
+    "time": {
+      "method": "regex",
+      "pattern": "(\\d{1,2}:\\d{2}(?::\\d{2})?\\s*(?:AM|PM)?)",
+      "required": false
+    },
+    "restaurant_name": {
+      "method": "region",
+      "region": "header",
+      "extract_first_line": true
+    },
+    "subtotal": {
+      "method": "regex",
+      "pattern": "Subtotal[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "cgst_2_5": {
+      "method": "regex",
+      "pattern": "CGST\\s*@\\s*2\\.5%[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "sgst_2_5": {
+      "method": "regex",
+      "pattern": "SGST\\s*@\\s*2\\.5%[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number"
+    },
+    "service_charge": {
+      "method": "regex",
+      "pattern": "Service\\s+Charge[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "type": "number",
+      "required": false
+    },
+    "total": {
+      "method": "regex",
+      "pattern": "(?:Grand\\s+)?Total[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "required": true,
+      "type": "number"
+    }
+  },
+  "items": {
+    "format": "vertical_list",
+    "detection": {
+      "region": "items_list",
+      "pattern": "(.+?)\\s+(\\d+)\\s*(?:x|@)\\s*([\\d,]+\\.?\\d*)\\s*([\\d,]+\\.?\\d*)"
+    },
+    "fields": {
+      "description": 1,
+      "quantity": 2,
+      "unit_price": 3,
+      "total": 4
+    }
+  },
+  "validation": {
+    "required_fields": ["bill_number", "date", "total"]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "layout_id": "standard_invoice",
+  "name": "Standard Invoice Layout",
+  "description": "A4/Letter size invoice with header, items table, and footer",
+  "characteristics": {
+    "orientation": "portrait",
+    "page_size": ["A4", "Letter"],
+    "typical_height_range": [800, 1200],
+    "typical_width_range": [550, 650],
+    "sections": [
+      "header",
+      "vendor_info",
+      "buyer_info",
+      "items_table",
+      "totals",
+      "footer"
+    ]
+  },
+  "detection_rules": {
+    "min_keywords": 3,
+    "keywords": [
+      "Invoice",
+      "Bill",
+      "GSTIN",
+      "Total",
+      "Date"
+    ],
+    "structure_indicators": [
+      "has_table",
+      "has_header",
+      "has_totals_section"
+    ]
+  },
+  "typical_regions": {
+    "header": {
+      "y_range": [0, 0.15],
+      "contains": ["logo", "company_name", "invoice_number"]
+    },
+    "vendor_info": {
+      "y_range": [0.15, 0.30],
+      "contains": ["vendor_name", "vendor_address", "vendor_gstin"]
+    },
+    "buyer_info": {
+      "y_range": [0.30, 0.45],
+      "contains": ["buyer_name", "buyer_address", "buyer_gstin"]
+    },
+    "items_table": {
+      "y_range": [0.45, 0.75],
+      "contains": ["line_items", "quantities", "prices"]
+    },
+    "totals": {
+      "y_range": [0.75, 0.90],
+      "contains": ["subtotal", "taxes", "grand_total"]
+    },
+    "footer": {
+      "y_range": [0.90, 1.0],
+      "contains": ["terms", "signature", "notes"]
+    }
+  }
+}

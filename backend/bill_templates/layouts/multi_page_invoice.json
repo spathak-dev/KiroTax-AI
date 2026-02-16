@@ -1,0 +1,94 @@
+{
+  "layout_id": "multi_page_invoice",
+  "name": "Multi-Page Invoice Layout",
+  "description": "Invoice spanning multiple pages with continued items",
+  "characteristics": {
+    "orientation": "portrait",
+    "page_size": ["A4", "Letter"],
+    "min_pages": 2,
+    "sections": [
+      "first_page_header",
+      "continued_page_header",
+      "items_table",
+      "final_page_totals"
+    ]
+  },
+  "detection_rules": {
+    "page_indicators": [
+      "Page \\d+ of \\d+",
+      "Continued...",
+      "...Continued from previous page"
+    ],
+    "repeated_headers": true,
+    "min_keywords": 3,
+    "keywords": [
+      "Invoice",
+      "Page",
+      "Continued",
+      "Total"
+    ]
+  },
+  "page_structure": {
+    "first_page": {
+      "header": {
+        "y_range": [0, 0.20],
+        "contains": ["invoice_number", "date", "vendor_info", "buyer_info"]
+      },
+      "items_start": {
+        "y_range": [0.20, 0.95],
+        "contains": ["table_header", "line_items"]
+      },
+      "page_footer": {
+        "y_range": [0.95, 1.0],
+        "contains": ["page_number", "continued_indicator"]
+      }
+    },
+    "middle_pages": {
+      "header": {
+        "y_range": [0, 0.10],
+        "contains": ["invoice_number", "page_number", "table_header"]
+      },
+      "items_continued": {
+        "y_range": [0.10, 0.95],
+        "contains": ["line_items"]
+      },
+      "page_footer": {
+        "y_range": [0.95, 1.0],
+        "contains": ["page_number", "continued_indicator"]
+      }
+    },
+    "last_page": {
+      "header": {
+        "y_range": [0, 0.10],
+        "contains": ["invoice_number", "page_number"]
+      },
+      "items_end": {
+        "y_range": [0.10, 0.70],
+        "contains": ["line_items"]
+      },
+      "totals": {
+        "y_range": [0.70, 0.90],
+        "contains": ["subtotal", "taxes", "grand_total"]
+      },
+      "footer": {
+        "y_range": [0.90, 1.0],
+        "contains": ["terms", "signature"]
+      }
+    }
+  },
+  "processing_rules": {
+    "page_number_detection": {
+      "regex": ["Page\\s+(\\d+)\\s+of\\s+(\\d+)", "\\d+\\s*/\\s*\\d+"],
+      "required": true
+    },
+    "content_matching": {
+      "match_invoice_number": true,
+      "match_table_headers": true,
+      "aggregate_items": true
+    },
+    "duplicate_detection": {
+      "check_repeated_headers": true,
+      "check_repeated_items": false
+    }
+  }
+}

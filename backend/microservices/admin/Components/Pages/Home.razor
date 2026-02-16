@@ -1,0 +1,103 @@
+﻿@page "/"
+@using admin.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+
+<PageTitle>Admin Dashboard - KiroTax AI</PageTitle>
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <p class="text-muted">KiroTax AI Management Console</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon users">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <div class="stat-content">
+                <h3>@totalUsers</h3>
+                <p>Total Users</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon bills">
+                <i class="bi bi-file-earmark-text-fill"></i>
+            </div>
+            <div class="stat-content">
+                <h3>@totalBills</h3>
+                <p>Bills Processed</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon templates">
+                <i class="bi bi-layout-text-window-reverse"></i>
+            </div>
+            <div class="stat-content">
+                <h3>@totalTemplates</h3>
+                <p>Templates</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon active">
+                <i class="bi bi-activity"></i>
+            </div>
+            <div class="stat-content">
+                <h3>@activeUsers</h3>
+                <p>Active Today</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="recent-activity">
+        <h2>Recent Activity</h2>
+        <div class="activity-list">
+            @if (recentActivities.Any())
+            {
+                @foreach (var activity in recentActivities)
+                {
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="bi bi-@activity.Icon"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p class="activity-text">@activity.Description</p>
+                            <small class="text-muted">@activity.Timestamp.ToString("MMM dd, yyyy HH:mm")</small>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-muted">No recent activity</p>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private int totalUsers = 0;
+    private int totalBills = 0;
+    private int totalTemplates = 0;
+    private int activeUsers = 0;
+    private List<ActivityLog> recentActivities = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Load statistics
+        totalUsers = await DbContext.Users.CountAsync();
+        totalBills = await DbContext.Bills.CountAsync();
+        totalTemplates = await DbContext.Templates.CountAsync();
+        activeUsers = await DbContext.Users.Where(u => u.LastLoginDate >= DateTime.Today).CountAsync();
+        
+        // Load recent activities
+        recentActivities = await DbContext.ActivityLogs
+            .OrderByDescending(a => a.Timestamp)
+            .Take(10)
+            .ToListAsync();
+    }
+}

@@ -1,0 +1,83 @@
+{
+  "template_id": "retail_receipt",
+  "name": "Retail Receipt (Thermal Printer)",
+  "layout_type": "long_receipt",
+  "version": "1.0.0",
+  "detection": {
+    "keywords": ["Receipt", "Bill", "Thank You"],
+    "min_matches": 2,
+    "layout_match": "long_receipt",
+    "aspect_ratio_min": 3.0,
+    "confidence_threshold": 0.6
+  },
+  "fields": {
+    "receipt_number": {
+      "method": "regex",
+      "pattern": "(?:Receipt|Bill)\\s+No[:\\s]*(.*?)(?:\\n|$)",
+      "aliases": ["Token No", "Bill No"],
+      "required": true
+    },
+    "date": {
+      "method": "regex",
+      "pattern": "(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4})",
+      "required": true
+    },
+    "time": {
+      "method": "regex",
+      "pattern": "(\\d{1,2}:\\d{2}(?::\\d{2})?\\s*(?:AM|PM)?)",
+      "required": false
+    },
+    "store_name": {
+      "method": "region",
+      "region": "header",
+      "extract_first_line": true
+    },
+    "subtotal": {
+      "method": "regex",
+      "pattern": "Subtotal[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "aliases": ["Sub Total"],
+      "type": "number"
+    },
+    "tax": {
+      "method": "regex",
+      "pattern": "Tax[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "aliases": ["GST", "VAT"],
+      "type": "number"
+    },
+    "total": {
+      "method": "regex",
+      "pattern": "Total[:\\s]*(?:Rs\\.?|₹)?\\s*([\\d,]+\\.?\\d*)",
+      "aliases": ["Grand Total", "Amount"],
+      "required": true,
+      "type": "number"
+    }
+  },
+  "items": {
+    "format": "vertical_list",
+    "detection": {
+      "region": "items_list",
+      "pattern": "(.+?)\\s+(\\d+)\\s*x\\s*([\\d,]+\\.?\\d*)\\s*=?\\s*([\\d,]+\\.?\\d*)"
+    },
+    "fields": {
+      "description": 1,
+      "quantity": 2,
+      "unit_price": 3,
+      "total": 4
+    }
+  },
+  "special_handling": {
+    "multi_scan": {
+      "enabled": true,
+      "overlap_pixels": 50,
+      "stitch_method": "vertical"
+    },
+    "repetition_detection": {
+      "enabled": true,
+      "check_header": true,
+      "check_footer": true
+    }
+  },
+  "validation": {
+    "required_fields": ["receipt_number", "date", "total"]
+  }
+}
